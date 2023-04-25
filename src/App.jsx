@@ -1,9 +1,8 @@
-import { useState } from 'react';
-import LoginForm from './components/LoginForm';
 import './App.css';
+import MyHeader from './components/MyHeader';
 
 function App() {
-  return <LoginForm />;
+  return <MyHeader />;
 }
 
 export default App;
