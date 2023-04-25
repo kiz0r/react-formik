@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const LOGIN_VALIDATION_SCHEMA = yup.object({
+export const SIGNUP_VALIDATION_SCHEMA = yup.object({
   firstName: yup
     .string()
     .min(2, 'First name must be at least 2 characters')
@@ -46,7 +46,7 @@ export const LOGIN_VALIDATION_SCHEMA = yup.object({
     .required('Please confirm your password'),
 });
 
-export const SIGNUP_VALIDATION_SCHEMA = yup.object({
+export const SIGNIN_VALIDATION_SCHEMA = yup.object({
   email: yup.string().email().required('Please enter your email'),
   password: yup
     .string()

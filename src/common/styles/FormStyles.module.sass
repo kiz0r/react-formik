@@ -1,3 +1,6 @@
+.formWrapper
+  margin: 24px 0
+
 .form
   display: flex
   flex-direction: column
@@ -6,19 +9,19 @@
   min-width: 500px
   max-width: 600px
   width: 100%
-  min-height: 400px
   padding: 0 12px
   gap: 12px
   font-size: 16px
 
 .formTitle 
   h1 
-    color: lightblue
+    color: #313131
     font-weight: 700
     font-size: 24px
   p 
     font-size: 18px
-    margin:18px 0
+    margin: 18px 0
+    font-weight: 500
 
 .namesWrapper 
   display: flex
@@ -45,7 +48,9 @@
   min-width: 100px
   max-width: 600px
   width: 100%
-  
+  &::placeholder
+    font-size: 14px
+    font-weight: 500
 
 .valid
   border: 1px solid #18FF79
@@ -55,10 +60,12 @@
 
 .error
   color: #EC1938
+  font-weight: 500
 
 .submitBtn
   color: #fff
   font-weight: 500
+  font-size: 16px
   background-color: #7F18FF
   border: none
   border-radius: 15px
