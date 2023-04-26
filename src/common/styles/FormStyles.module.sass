@@ -28,8 +28,10 @@
   justify-content: space-between
   min-width: inherit
   max-width: inherit
-  width: 500px
+  width:500px
   gap: 24px
+  @media screen and (max-width:700px) 
+    width: 300px
 
 .label
   display: flex
@@ -45,9 +47,9 @@
   padding: 10px
   border: 1px solid #000
   border-radius: 12px
-  width: 100%
   min-width: 100px
   max-width: 500px
+  width: 100%
   &::placeholder
     font-size: 14px
     font-weight: 500
