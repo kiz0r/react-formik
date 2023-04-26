@@ -42,7 +42,7 @@ export const SIGNUP_VALIDATION_SCHEMA = yup.object({
     .required('Please enter your password'),
   confirmedPassword: yup
     .string()
-    .matches(yup.ref('password'), 'Passwords must match')
+    .oneOf([yup.ref('password'), null], 'Passwords must match')
     .required('Please confirm your password'),
 });
 
