@@ -1,9 +1,10 @@
 import { Form, Formik } from 'formik';
 import { SIGNIN_VALIDATION_SCHEMA } from '../../utils/validate/validationSchemas';
 import FormInput from '../FormInput';
+import PasswordInput from '../PasswordInput';
 import styles from '../../common/styles/FormStyles.module.sass';
 import { FormContext } from '../../contexts';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 const { submitBtn, form, formTitle, formWrapper } = styles;
 
@@ -15,7 +16,7 @@ const classes = {
   invalid: styles.invalid,
 };
 
-const SignInForm = ({ title, description }) => {
+const SignInForm = () => {
   const signInFormInitialValues = {
     email: '',
     password: '',
@@ -26,6 +27,7 @@ const SignInForm = ({ title, description }) => {
   };
 
   const { signInTitle, signInDesc } = useContext(FormContext);
+  const [isShownPassword, setIsShownPassword] = useState(false);
 
   return (
     <div className={formWrapper}>
@@ -46,11 +48,11 @@ const SignInForm = ({ title, description }) => {
             placeholder="Email"
             classes={classes}
           />
-          <FormInput
+          <PasswordInput
             label="Password"
             name="password"
-            type="password"
             placeholder="Password"
+            isShown={[isShownPassword, setIsShownPassword]}
             classes={classes}
           />
           <button type="submit" className={submitBtn}>
