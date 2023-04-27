@@ -16,14 +16,12 @@ const PasswordInput = ({ name, label, classes, ...restProps }) => {
         });
         const [isShown, setIsShown] = useState(false);
 
-        const [fieldType, setFieldType] = useState('password');
         const handleToggle = () => {
-          setIsShown(!isShown);
-          fieldType === 'password'
-            ? setFieldType('text')
-            : setFieldType('password');
+          const newFieldType = isShown ? 'text' : 'password';
+          return newFieldType;
         };
 
+        const fieldType = handleToggle();
         return (
           <label className={classes.label}>
             <span>{label}</span>
@@ -38,7 +36,7 @@ const PasswordInput = ({ name, label, classes, ...restProps }) => {
                 className={shownBtn}
                 type="button"
                 onClick={() => {
-                  handleToggle();
+                  setIsShown(!isShown);
                 }}
               >
                 {isShown ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
