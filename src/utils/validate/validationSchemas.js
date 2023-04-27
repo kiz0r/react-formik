@@ -1,5 +1,23 @@
 import * as yup from 'yup';
 
+const PASSWORD_VALIDATION_SCHEMA = yup
+  .string()
+  .min(8, 'Password must be at least 8 characters')
+  .max(16, 'Password must be at most 16 characters')
+  .matches(/.*[a-z].*/, 'Password must include at least one lowercase letter')
+  .matches(/.*[A-Z].*/, 'Password must include at least one uppercase letter')
+  .matches(/.*\d.*/, 'Password must include at least one number')
+  .matches(
+    /.*[!@#$%^&*()_+=[\]{}\\|;:'",.<>/?-].*/,
+    'Password must include at least one special character'
+  )
+  .required('Please enter your password');
+
+const EMAIL_VALIDATION_SCHEMA = yup
+  .string()
+  .email()
+  .required('Please enter your email');
+
 export const SIGNUP_VALIDATION_SCHEMA = yup.object({
   firstName: yup
     .string()
@@ -27,19 +45,8 @@ export const SIGNUP_VALIDATION_SCHEMA = yup.object({
     .max(16, 'Username must be at most 16 characters')
     .lowercase('Username should contain only latin letters')
     .required('Please enter your username'),
-  email: yup.string().email().required('Please enter your email'),
-  password: yup
-    .string()
-    .min(8, 'Password must be at least 8 characters')
-    .max(16, 'Password must be at most 16 characters')
-    .matches(/.*[a-z].*/, 'Password must include at least one lowercase letter')
-    .matches(/.*[A-Z].*/, 'Password must include at least one uppercase letter')
-    .matches(/.*\d.*/, 'Password must include at least one number')
-    .matches(
-      /.*[!@#$%^&*()_+=[\]{}\\|;:'",.<>/?-].*/,
-      'Password must include at least one special character'
-    )
-    .required('Please enter your password'),
+  email: EMAIL_VALIDATION_SCHEMA,
+  password: PASSWORD_VALIDATION_SCHEMA,
   confirmedPassword: yup
     .string()
     .oneOf([yup.ref('password'), null], 'Passwords must match')
@@ -47,17 +54,6 @@ export const SIGNUP_VALIDATION_SCHEMA = yup.object({
 });
 
 export const SIGNIN_VALIDATION_SCHEMA = yup.object({
-  email: yup.string().email().required('Please enter your email'),
-  password: yup
-    .string()
-    .min(8, 'Password must be at least 8 characters')
-    .max(16, 'Password must be at most 16 characters')
-    .matches(/.*[a-z].*/, 'Password must include at least one lowercase letter')
-    .matches(/.*[A-Z].*/, 'Password must include at least one uppercase letter')
-    .matches(/.*\d.*/, 'Password must include at least one number')
-    .matches(
-      /.*[!@#$%^&*()_+=[\]{}\\|;:'",.<>/?-].*/,
-      'Password must include at least one special character'
-    )
-    .required('Please enter your password'),
+  email: EMAIL_VALIDATION_SCHEMA,
+  password: PASSWORD_VALIDATION_SCHEMA,
 });

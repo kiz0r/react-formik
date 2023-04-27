@@ -2,9 +2,9 @@ import { Form, Formik } from 'formik';
 import { SIGNUP_VALIDATION_SCHEMA } from '../../utils/validate/validationSchemas';
 import FormInput from '../FormInput';
 import styles from '../../common/styles/FormStyles.module.sass';
-import { FormContext } from '../../contexts';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import PasswordInput from '../PasswordInput';
+import { FORM_FILLING } from '../../common/constants';
 
 const { submitBtn, form, namesWrapper, formTitle, formWrapper } = styles;
 
@@ -21,6 +21,8 @@ const SignUpForm = () => {
   const [isShownConfirmedPassword, setIsShownConfirmedPassword] =
     useState(false);
 
+  const { signUpDesc, signUpTitle } = FORM_FILLING;
+
   const signUpFormInitialValues = {
     firstName: '',
     lastName: '',
@@ -33,8 +35,6 @@ const SignUpForm = () => {
   const handleSubmit = (values, formikBag) => {
     formikBag.resetForm();
   };
-
-  const { signUpTitle, signUpDesc } = useContext(FormContext);
 
   return (
     <div className={formWrapper}>

@@ -1,21 +1,24 @@
 import { Link } from 'react-router-dom';
 import './Header.sass';
 import logo from '/logo.svg';
+import { BASE } from '../../common/constants';
+
 const Header = () => {
-  const base = '/react-formik/';
   return (
     <header className="header">
-      <img src={logo} alt="Company Logo" className="logo" />
+      <Link to={`${BASE}`}>
+        <img src={logo} alt="Company Logo" className="logo" />
+      </Link>
       <nav>
         <ul className="routerList">
           <li>
-            <Link to={`${base}`}>Home</Link>
+            <Link to={`${BASE}`}>Home</Link>
           </li>
           <li>
-            <Link to={`${base}signUp`}>Sign Up</Link>
+            <Link to={`${BASE}signUp`}>Sign Up</Link>
           </li>
           <li>
-            <Link to={`${base}signIn`}>Sign In</Link>
+            <Link to={`${BASE}signIn`}>Sign In</Link>
           </li>
         </ul>
       </nav>

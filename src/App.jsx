@@ -1,30 +1,26 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { Home, NotFound, SignIn, SignUp } from './components/pages';
-import { formFilling, FormContext } from './contexts';
+import { BASE } from './common/constants';
 
 function App() {
-  const base = '/react-formik/';
-
   return (
-    <FormContext.Provider value={formFilling}>
-      <Router>
-        <Switch>
-          <Route exact path={`${base}`}>
-            <Home />
-          </Route>
-          <Route path={`${base}signUp`}>
-            <SignUp />
-          </Route>
-          <Route path={`${base}signIn`}>
-            <SignIn />
-          </Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
-        </Switch>
-      </Router>
-    </FormContext.Provider>
+    <Router>
+      <Switch>
+        <Route exact path={`${BASE}`}>
+          <Home />
+        </Route>
+        <Route path={`${BASE}signUp`}>
+          <SignUp />
+        </Route>
+        <Route path={`${BASE}signIn`}>
+          <SignIn />
+        </Route>
+        <Route path="*">
+          <NotFound />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
