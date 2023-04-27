@@ -2,7 +2,6 @@ import { Form, Formik } from 'formik';
 import { SIGNUP_VALIDATION_SCHEMA } from '../../utils/validate/validationSchemas';
 import FormInput from '../FormInput';
 import styles from '../../common/styles/FormStyles.module.sass';
-import { useState } from 'react';
 import PasswordInput from '../PasswordInput';
 import { FORM_FILLING } from '../../common/constants';
 
@@ -17,10 +16,6 @@ const classes = {
 };
 
 const SignUpForm = () => {
-  const [isShownPassword, setIsShownPassword] = useState(false);
-  const [isShownConfirmedPassword, setIsShownConfirmedPassword] =
-    useState(false);
-
   const { signUpDesc, signUpTitle } = FORM_FILLING;
 
   const signUpFormInitialValues = {
@@ -83,7 +78,6 @@ const SignUpForm = () => {
             label="Password"
             name="password"
             placeholder="Password"
-            isShown={[isShownPassword, setIsShownPassword]}
             classes={classes}
           />
 
@@ -91,7 +85,6 @@ const SignUpForm = () => {
             label="Confirm Password"
             name="confirmedPassword"
             placeholder="Confirm Password"
-            isShown={[isShownConfirmedPassword, setIsShownConfirmedPassword]}
             classes={classes}
           />
 

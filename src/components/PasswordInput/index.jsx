@@ -6,13 +6,7 @@ import styles from './PasswordInput.module.sass';
 
 const { shownBtn, passwordInputWrapper } = styles;
 
-const PasswordInput = ({
-  name,
-  label,
-  classes,
-  isShown: [isShown, setIsShown],
-  ...restProps
-}) => {
+const PasswordInput = ({ name, label, classes, ...restProps }) => {
   return (
     <Field name={name}>
       {({ field, form: { errors, touched }, meta }) => {
@@ -20,13 +14,15 @@ const PasswordInput = ({
           [classes.valid]: !meta.error && meta.touched,
           [classes.invalid]: meta.error && meta.touched,
         });
+        const [isShown, setIsShown] = useState(false);
 
         const [fieldType, setFieldType] = useState('password');
-
-        const handleToggle = () =>
+        const handleToggle = () => {
+          setIsShown(!isShown);
           fieldType === 'password'
             ? setFieldType('text')
             : setFieldType('password');
+        };
 
         return (
           <label className={classes.label}>
@@ -42,7 +38,6 @@ const PasswordInput = ({
                 className={shownBtn}
                 type="button"
                 onClick={() => {
-                  setIsShown(!isShown);
                   handleToggle();
                 }}
               >

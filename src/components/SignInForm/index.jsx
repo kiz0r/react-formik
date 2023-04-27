@@ -3,7 +3,6 @@ import { SIGNIN_VALIDATION_SCHEMA } from '../../utils/validate/validationSchemas
 import FormInput from '../FormInput';
 import PasswordInput from '../PasswordInput';
 import styles from '../../common/styles/FormStyles.module.sass';
-import { useState } from 'react';
 import { FORM_FILLING } from '../../common/constants';
 
 const { submitBtn, form, formTitle, formWrapper } = styles;
@@ -17,8 +16,6 @@ const classes = {
 };
 
 const SignInForm = () => {
-  const [isShownPassword, setIsShownPassword] = useState(false);
-
   const { signInDesc, signInTitle } = FORM_FILLING;
 
   const signInFormInitialValues = {
@@ -53,7 +50,6 @@ const SignInForm = () => {
             label="Password"
             name="password"
             placeholder="Password"
-            isShown={[isShownPassword, setIsShownPassword]}
             classes={classes}
           />
           <button type="submit" className={submitBtn}>
